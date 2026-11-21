@@ -27,8 +27,17 @@
 
   "ui": {
     "collapse": { "en": "collapse section", "pt": "recolher seção" },
-    "expand": { "en": "expand section", "pt": "expandir seção" }
+    "expand": { "en": "expand section", "pt": "expandir seção" },
+    "theme": { "en": "theme", "pt": "tema" }
   },
+
+  "themes": [
+    { "id": "acid", "name": { "en": "Acid", "pt": "Ácido" } },
+    { "id": "terminal", "name": { "en": "Terminal", "pt": "Terminal" } },
+    { "id": "amber", "name": { "en": "Amber", "pt": "Âmbar" } },
+    { "id": "paper", "name": { "en": "Paper", "pt": "Papel" } },
+    { "id": "vapor", "name": { "en": "Vapor", "pt": "Vapor" } }
+  ],
 
   "spotify": {
     "title": { "en": "Listening", "pt": "Ouvindo" },

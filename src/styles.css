@@ -1,22 +1,91 @@
 /* ------------------------------------------------------------
    fernando santos - homepage
    tables, borders, noise. no frameworks.
+
+   Every colour comes from a variable, so a theme is just a block of
+   values (see "themes" at the bottom). The default (:root) is "acid".
    ------------------------------------------------------------ */
 
-html { background: #000; }
+:root {
+  color-scheme: dark;
+
+  --bg: #050505;
+  --stripe: rgba(255, 0, 60, .06);   /* diagonal stripes on the page */
+  --grain: .22;                       /* noise opacity */
+  --scan: .28;                        /* scanline opacity */
+
+  --text: #d8d8d8;
+  --text-dim: #aaa;
+  --text-mute: #777;
+  --strong: #fff;
+  --em: #ffe600;
+
+  --link: #00e5ff;
+  --visited: #ff3df2;
+  --hover-bg: #ffe600;
+  --hover-fg: #000;
+  --active-bg: #ff1e1e;
+  --active-fg: #fff;
+
+  /* the five accent colours; sections/panels pick one each */
+  --a-red: #ff2a2a;
+  --a-cyan: #00e5ff;
+  --a-lime: #7cfc00;
+  --a-mag: #ff00cc;
+  --a-yel: #ffe600;
+  --on-accent: #000;                  /* text on top of an accent bar */
+
+  --panel-bg: #0b0b0b;
+  --card-bg: #050505;
+  --code-bg: #000;
+  --code-fg: #7cfc00;
+  --code-border: #666;
+  --line: #444;
+  --line2: #666;
+  --tag-border: #888;
+  --tag-bg: #000;
+  --tag-fg: #ddd;
+
+  --mast-a: #1a0000;
+  --mast-b: #000;
+  --mast-border: #ff2a2a;
+  --name: #ffe600;
+  --name-a: #ff00cc;
+  --name-b: #00e5ff;
+  --name-c: #000;
+  --ticker-bg: #ffe600;
+  --ticker-fg: #000;
+
+  --font-body: Verdana, Geneva, Arial, sans-serif;
+  --font-head: Impact, "Arial Black", Haettenschweiler, "Liberation Sans", sans-serif;
+  --font-sub: "Arial Black", Impact, "Liberation Sans", sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+  --fs: 13px;
+}
+
+html {
+  background-color: var(--bg);
+  background-image: repeating-linear-gradient(45deg, var(--stripe) 0 2px, transparent 2px 9px);
+}
 
 body {
   margin: 0;
   padding: 10px 6px 30px 6px;
-  color: #d8d8d8;
-  font-family: Verdana, Geneva, Arial, sans-serif;
-  font-size: 13px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs);
   line-height: 1.45;
-  background-color: #050505;
-  /* grain + diagonal stripes */
-  background-image:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.22'/></svg>"),
-    repeating-linear-gradient(45deg, rgba(255,0,60,.06) 0 2px, transparent 2px 9px);
+}
+
+/* grain, behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: var(--grain);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
 /* scanlines over everything */
@@ -25,81 +94,100 @@ body::after {
   position: fixed;
   left: 0; top: 0; right: 0; bottom: 0;
   pointer-events: none;
-  background: repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px);
+  opacity: var(--scan);
+  background: repeating-linear-gradient(0deg, #000 0 1px, transparent 1px 3px);
   z-index: 99;
 }
 
-a:link    { color: #00e5ff; }
-a:visited { color: #ff3df2; }
-a:hover   { color: #000; background: #ffe600; text-decoration: none; }
-a:active  { color: #fff; background: #ff1e1e; }
+a:link    { color: var(--link); }
+a:visited { color: var(--visited); }
+a:hover   { color: var(--hover-fg); background: var(--hover-bg); text-decoration: none; }
+a:active  { color: var(--active-fg); background: var(--active-bg); }
 
 #wrap { width: 820px; margin: 0 auto; }
 
 table { border-collapse: separate; }
 td { vertical-align: top; }
 
-/* ---------- language bar ---------- */
-.langbar {
-  text-align: right;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
+/* ---------- top bar: theme (left) / language (right) ---------- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
   margin: 0 0 6px 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
 }
+
+.themebar { color: var(--text-dim); }
+.themebar select {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--tag-fg);
+  background: var(--panel-bg);
+  border: 2px solid var(--line2);
+  padding: 1px 6px;
+  margin-left: 4px;
+  cursor: pointer;
+}
+.themebar select:focus-visible { outline: 2px solid var(--a-yel); outline-offset: 1px; }
+
 .langbar a:link, .langbar a:visited {
   display: inline-block;
-  border: 2px solid #555;
+  border: 2px solid var(--line2);
   padding: 1px 9px;
   margin-left: 4px;
   text-decoration: none;
-  color: #ddd;
+  color: var(--tag-fg);
 }
 .langbar a.on:link, .langbar a.on:visited {
-  background: #ffe600;
-  border-color: #ffe600;
-  color: #000;
+  background: var(--a-yel);
+  border-color: var(--a-yel);
+  color: var(--on-accent);
   font-weight: bold;
 }
 
 /* ---------- masthead ---------- */
 table.head {
   width: 100%;
-  border: 4px double #ff2a2a;
-  background: repeating-linear-gradient(-45deg, #1a0000 0 10px, #000 10px 20px);
+  border: 4px double var(--mast-border);
+  background: repeating-linear-gradient(-45deg, var(--mast-a) 0 10px, var(--mast-b) 10px 20px);
   margin-bottom: 8px;
 }
 table.head td { padding: 12px 16px 8px 16px; }
 
 h1.name {
-  font-family: Impact, "Arial Black", Haettenschweiler, "Liberation Sans", sans-serif;
+  font-family: var(--font-head);
   font-weight: bold;
   font-size: 78px;
   line-height: 0.9;
   margin: 0;
-  color: #ffe600;
+  color: var(--name);
   text-transform: uppercase;
   letter-spacing: 1px;
-  text-shadow: 4px 0 #ff00cc, -4px 0 #00e5ff, 0 4px #000;
+  text-shadow: 4px 0 var(--name-a), -4px 0 var(--name-b), 0 4px var(--name-c);
 }
 .sub {
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 15px;
-  color: #7cfc00;
+  color: var(--a-lime);
   margin: 6px 0 0 0;
 }
-.sub b { color: #ff2a2a; }
+.sub b { color: var(--a-red); }
 
 .ticker {
   overflow: hidden;
   white-space: nowrap;
-  background: #ffe600;
-  color: #000;
-  font-family: "Courier New", Courier, monospace;
+  background: var(--ticker-bg);
+  color: var(--ticker-fg);
+  font-family: var(--font-mono);
   font-weight: bold;
   font-size: 14px;
-  border: 2px solid #000;
-  border-top: 4px solid #ff2a2a;
-  border-bottom: 4px solid #ff2a2a;
+  border: 2px solid var(--ticker-fg);
+  border-top: 4px solid var(--a-red);
+  border-bottom: 4px solid var(--a-red);
   margin-bottom: 8px;
   padding: 2px 0;
 }
@@ -107,93 +195,93 @@ h1.name {
 /* ---------- left column ---------- */
 td.side { width: 188px; padding-right: 8px; }
 
-table.panel { width: 100%; margin-bottom: 8px; background: #0b0b0b; }
+table.panel { width: 100%; margin-bottom: 8px; background: var(--panel-bg); }
 table.panel th {
-  font-family: Impact, "Arial Black", "Liberation Sans", sans-serif;
+  font-family: var(--font-head);
   font-weight: bold;
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 1px;
   text-align: left;
   padding: 2px 8px;
-  color: #000;
+  color: var(--on-accent);
 }
 table.panel td { padding: 6px 8px; }
 
-table.p-red  { border: 3px ridge #ff2a2a; } table.p-red  th { background: #ff2a2a; }
-table.p-cyan { border: 3px ridge #00e5ff; } table.p-cyan th { background: #00e5ff; }
-table.p-lime { border: 3px ridge #7cfc00; } table.p-lime th { background: #7cfc00; }
+table.p-red  { border: 3px ridge var(--a-red); }  table.p-red  th { background: var(--a-red); }
+table.p-cyan { border: 3px ridge var(--a-cyan); } table.p-cyan th { background: var(--a-cyan); }
+table.p-lime { border: 3px ridge var(--a-lime); } table.p-lime th { background: var(--a-lime); }
 
 .menu a {
   display: block;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-mono);
   font-weight: bold;
   font-size: 14px;
   padding: 1px 0;
   text-decoration: none;
 }
-.menu a:before { content: ">> "; color: #ff2a2a; }
-.menu a:hover:before { color: #000; }
+.menu a:before { content: ">> "; color: var(--a-red); }
+.menu a:hover:before { color: var(--hover-fg); }
 
-.mono { font-family: "Courier New", Courier, monospace; font-size: 12px; }
-.mono b { color: #ffe600; }
+.mono { font-family: var(--font-mono); font-size: 12px; }
+.mono b { color: var(--a-yel); }
 
-.blink { animation: blink 1s steps(2, start) infinite; color: #ff2a2a; font-weight: bold; }
+.blink { animation: blink 1s steps(2, start) infinite; color: var(--a-red); font-weight: bold; }
 @keyframes blink { to { visibility: hidden; } }
 
 /* ---------- main column ---------- */
 td.main { padding: 0; }
 
-table.sec { width: 100%; margin-bottom: 10px; background: #0b0b0b; }
+table.sec { width: 100%; margin-bottom: 10px; background: var(--panel-bg); }
 table.sec > tbody > tr > th {
-  font-family: Impact, "Arial Black", "Liberation Sans", sans-serif;
+  font-family: var(--font-head);
   font-weight: bold;
   font-size: 26px;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-align: left;
   padding: 1px 10px;
-  color: #000;
+  color: var(--on-accent);
 }
 table.sec > tbody > tr > td { padding: 10px 14px 12px 14px; }
 
-table.s-red  { border: 4px ridge #ff2a2a; } table.s-red  > tbody > tr > th { background: #ff2a2a; }
-table.s-cyan { border: 4px ridge #00e5ff; } table.s-cyan > tbody > tr > th { background: #00e5ff; }
-table.s-lime { border: 4px ridge #7cfc00; } table.s-lime > tbody > tr > th { background: #7cfc00; }
-table.s-mag  { border: 4px ridge #ff00cc; } table.s-mag  > tbody > tr > th { background: #ff00cc; }
-table.s-yel  { border: 4px ridge #ffe600; } table.s-yel  > tbody > tr > th { background: #ffe600; }
+table.s-red  { border: 4px ridge var(--a-red); }  table.s-red  > tbody > tr > th { background: var(--a-red); }
+table.s-cyan { border: 4px ridge var(--a-cyan); } table.s-cyan > tbody > tr > th { background: var(--a-cyan); }
+table.s-lime { border: 4px ridge var(--a-lime); } table.s-lime > tbody > tr > th { background: var(--a-lime); }
+table.s-mag  { border: 4px ridge var(--a-mag); }  table.s-mag  > tbody > tr > th { background: var(--a-mag); }
+table.s-yel  { border: 4px ridge var(--a-yel); }  table.s-yel  > tbody > tr > th { background: var(--a-yel); }
 
 p { margin: 6px 0; }
 .big { font-size: 16px; }
-em { color: #ffe600; font-style: normal; }
-strong { color: #fff; }
+em { color: var(--em); font-style: normal; }
+strong { color: var(--strong); }
 
-hr.dash { border: 0; border-top: 2px dashed #444; margin: 12px 0; }
+hr.dash { border: 0; border-top: 2px dashed var(--line); margin: 12px 0; }
 
 /* ---------- experience ---------- */
 .job h3 {
-  font-family: "Arial Black", Impact, "Liberation Sans", sans-serif;
+  font-family: var(--font-sub);
   font-weight: bold;
   font-size: 17px;
   text-transform: uppercase;
-  color: #ffe600;
+  color: var(--a-yel);
   margin: 0;
 }
-.job h3 .org { color: #fff; }
+.job h3 .org { color: var(--strong); }
 .when {
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
-  color: #7cfc00;
+  color: var(--a-lime);
   margin: 1px 0 4px 0;
 }
 ul.hl { margin: 4px 0 6px 0; padding: 0; list-style: none; }
 ul.hl li { margin: 5px 0; padding-left: 16px; position: relative; }
-ul.hl li:before { content: "\25B8"; position: absolute; left: 0; color: #ff2a2a; }
+ul.hl li:before { content: "\25B8"; position: absolute; left: 0; color: var(--a-red); }
 .stk {
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
-  color: #00e5ff;
-  border-left: 3px solid #ff00cc;
+  color: var(--a-cyan);
+  border-left: 3px solid var(--a-mag);
   padding-left: 6px;
   margin: 6px 0 0 0;
 }
@@ -201,10 +289,10 @@ ul.hl li:before { content: "\25B8"; position: absolute; left: 0; color: #ff2a2a;
 
 /* ---------- projects (empty state) ---------- */
 .empty {
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 13px;
-  color: #aaa;
-  border: 2px dashed #555;
+  color: var(--text-dim);
+  border: 2px dashed var(--line2);
   padding: 14px;
   text-align: center;
 }
@@ -212,23 +300,23 @@ ul.hl li:before { content: "\25B8"; position: absolute; left: 0; color: #ff2a2a;
 /* ---------- stack ---------- */
 .tags span.tag {
   display: inline-block;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
-  border: 1px solid #888;
-  background: #000;
-  color: #ddd;
+  border: 1px solid var(--tag-border);
+  background: var(--tag-bg);
+  color: var(--tag-fg);
   padding: 0 5px;
   margin: 0 3px 4px 0;
 }
-.tags span.tag.h { border-color: #ffe600; color: #ffe600; }
+.tags span.tag.h { border-color: var(--a-yel); color: var(--a-yel); }
 
 /* ---------- contact ---------- */
 pre.contact {
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 15px;
-  background: #000;
-  color: #7cfc00;
-  border: 2px inset #666;
+  background: var(--code-bg);
+  color: var(--code-fg);
+  border: 2px inset var(--code-border);
   padding: 10px 12px;
   margin: 0 0 8px 0;
   overflow-x: auto;
@@ -236,9 +324,9 @@ pre.contact {
 
 .foot {
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-mono);
   font-size: 11px;
-  color: #777;
+  color: var(--text-mute);
   margin-top: 14px;
 }
 
@@ -265,8 +353,8 @@ pre.contact {
 /* each project is its own card; the sticker is pinned to the card's top-right corner */
 .proj-card {
   position: relative;
-  border: 2px dashed #666;
-  background: #050505;
+  border: 2px dashed var(--line2);
+  background: var(--card-bg);
   padding: 12px 14px 6px 14px;
   margin: 34px 0 14px 0;
 }
@@ -302,39 +390,110 @@ table.sec .bar {
   user-select: none;
 }
 table.sec .toggle {
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-mono);
   font-weight: bold;
   font-size: 15px;
   line-height: 1;
-  color: #000;
+  color: var(--on-accent);
   background: transparent;
-  border: 2px solid #000;
+  border: 2px solid var(--on-accent);
   padding: 3px 9px;
   margin: 3px 0;
   cursor: pointer;
 }
 table.sec .bar:hover .toggle,
-table.sec .toggle:focus-visible { background: #000; color: #fff; outline: none; }
+table.sec .toggle:focus-visible { background: var(--on-accent); color: var(--panel-bg); outline: none; }
 
 /* ---------- spotify panel ---------- */
-table.p-mag { border: 3px ridge #ff00cc; } table.p-mag th { background: #ff00cc; }
+table.p-mag { border: 3px ridge var(--a-mag); } table.p-mag th { background: var(--a-mag); }
 
-.spotify .status { color: #ff00cc; font-weight: bold; margin-bottom: 6px; }
+.spotify .status { color: var(--a-mag); font-weight: bold; margin-bottom: 6px; }
 .spotify .cover {
   display: block;
   width: 100%;
   height: auto;
-  border: 2px solid #ff00cc;
-  background: #000;
+  border: 2px solid var(--a-mag);
+  background: var(--code-bg);
   margin-bottom: 6px;
 }
 .spotify .track { font-weight: bold; font-size: 13px; word-break: break-word; }
-.spotify .artist { color: #aaa; margin-top: 2px; word-break: break-word; }
+.spotify .artist { color: var(--text-dim); margin-top: 2px; word-break: break-word; }
 
 /* tiny equalizer while something is playing */
 .eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 11px; vertical-align: baseline; }
-.eq i { display: block; width: 3px; background: #ff00cc; animation: eq 0.9s ease-in-out infinite; }
+.eq i { display: block; width: 3px; background: var(--a-mag); animation: eq 0.9s ease-in-out infinite; }
 .eq i:nth-child(2) { animation-delay: .3s; }
 .eq i:nth-child(3) { animation-delay: .6s; }
 @keyframes eq { 0%, 100% { height: 3px; } 50% { height: 11px; } }
 @media (prefers-reduced-motion: reduce) { .eq i { animation: none; height: 7px; } }
+
+/* ============================================================
+   themes: each one only overrides variables. "acid" = :root above.
+   ============================================================ */
+
+/* green phosphor terminal */
+html[data-theme="terminal"] {
+  --bg: #000; --stripe: rgba(0, 255, 70, .035); --grain: .10; --scan: .45;
+  --text: #36e036; --text-dim: #1f9a1f; --text-mute: #157515; --strong: #b9ffb9; --em: #e6ff6a;
+  --link: #8dffb0; --visited: #4fcf70; --hover-bg: #2bff2b; --hover-fg: #001a00; --active-bg: #b9ffb9; --active-fg: #000;
+  --a-red: #2bff2b; --a-cyan: #18d68a; --a-lime: #8dff3a; --a-mag: #00b862; --a-yel: #c8ff3a; --on-accent: #001a00;
+  --panel-bg: #010d01; --card-bg: #000; --code-bg: #000; --code-fg: #2bff2b; --code-border: #0a6a0a;
+  --line: #0f4d0f; --line2: #127512; --tag-border: #1c8a1c; --tag-bg: #000; --tag-fg: #36e036;
+  --mast-a: #001a00; --mast-b: #000; --mast-border: #2bff2b;
+  --name: #8dff3a; --name-a: #0a8a2a; --name-b: #00ffaa; --name-c: #000;
+  --ticker-bg: #2bff2b; --ticker-fg: #001a00;
+  --font-body: "Courier New", Courier, monospace;
+  --font-head: "Courier New", Courier, monospace;
+  --font-sub: "Courier New", Courier, monospace;
+  --fs: 13px;
+}
+
+/* amber monitor */
+html[data-theme="amber"] {
+  --bg: #0d0700; --stripe: rgba(255, 140, 0, .035); --grain: .10; --scan: .40;
+  --text: #ffb84d; --text-dim: #c68a2e; --text-mute: #8a6020; --strong: #ffe2a8; --em: #ffd24d;
+  --link: #ffe08a; --visited: #d9963a; --hover-bg: #ffb000; --hover-fg: #1a0f00; --active-bg: #ffe2a8; --active-fg: #000;
+  --a-red: #ff8c00; --a-cyan: #ffb000; --a-lime: #ffcc33; --a-mag: #ff6a00; --a-yel: #ffd24d; --on-accent: #1a0f00;
+  --panel-bg: #140b00; --card-bg: #0a0500; --code-bg: #060300; --code-fg: #ffb000; --code-border: #6a4400;
+  --line: #4a2f00; --line2: #6a4400; --tag-border: #8a5c10; --tag-bg: #060300; --tag-fg: #ffcf7a;
+  --mast-a: #1f1100; --mast-b: #0d0700; --mast-border: #ffb000;
+  --name: #ffd24d; --name-a: #b34700; --name-b: #ffb000; --name-c: #000;
+  --ticker-bg: #ffb000; --ticker-fg: #1a0f00;
+  --font-body: "Courier New", Courier, monospace;
+  --font-head: "Courier New", Courier, monospace;
+  --font-sub: "Courier New", Courier, monospace;
+  --fs: 13px;
+}
+
+/* plain light page, the default look of a 90s browser */
+html[data-theme="paper"] {
+  color-scheme: light;
+  --bg: #fff; --stripe: transparent; --grain: .05; --scan: 0;
+  --text: #111; --text-dim: #555; --text-mute: #777; --strong: #000; --em: #a00000;
+  --link: #0000ee; --visited: #551a8b; --hover-bg: #ffff00; --hover-fg: #000; --active-bg: #f00; --active-fg: #fff;
+  --a-red: #800000; --a-cyan: #000080; --a-lime: #006400; --a-mag: #800080; --a-yel: #6b5a00; --on-accent: #fff;
+  --panel-bg: #fff; --card-bg: #f7f7f7; --code-bg: #f0f0f0; --code-fg: #006400; --code-border: #888;
+  --line: #999; --line2: #777; --tag-border: #666; --tag-bg: #f4f4f4; --tag-fg: #222;
+  --mast-a: #f0f0f0; --mast-b: #fff; --mast-border: #000080;
+  --name: #000080; --name-a: transparent; --name-b: transparent; --name-c: transparent;
+  --ticker-bg: #ffffcc; --ticker-fg: #000;
+  --font-body: Georgia, "Times New Roman", Times, serif;
+  --font-head: Georgia, "Times New Roman", Times, serif;
+  --font-sub: Georgia, "Times New Roman", Times, serif;
+  --fs: 14px;
+}
+html[data-theme="paper"] .sticker { filter: drop-shadow(2px 3px 2px rgba(0, 0, 0, .45)); }
+html[data-theme="paper"] body::after { display: none; }
+
+/* purple / pink dusk */
+html[data-theme="vapor"] {
+  --bg: #14002b; --stripe: rgba(255, 113, 206, .07); --grain: .12; --scan: .15;
+  --text: #e6d5ff; --text-dim: #b39ddb; --text-mute: #8a73b5; --strong: #fff; --em: #fffb96;
+  --link: #01cdfe; --visited: #b967ff; --hover-bg: #fffb96; --hover-fg: #14002b; --active-bg: #ff71ce; --active-fg: #14002b;
+  --a-red: #ff71ce; --a-cyan: #01cdfe; --a-lime: #05ffa1; --a-mag: #b967ff; --a-yel: #fffb96; --on-accent: #14002b;
+  --panel-bg: #1c0540; --card-bg: #160033; --code-bg: #0d001d; --code-fg: #05ffa1; --code-border: #6a3fb0;
+  --line: #4b2a85; --line2: #6a3fb0; --tag-border: #8a5fd0; --tag-bg: #0d001d; --tag-fg: #e6d5ff;
+  --mast-a: #240650; --mast-b: #14002b; --mast-border: #ff71ce;
+  --name: #fffb96; --name-a: #ff71ce; --name-b: #01cdfe; --name-c: #14002b;
+  --ticker-bg: #fffb96; --ticker-fg: #14002b;
+}

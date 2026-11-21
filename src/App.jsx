@@ -2,6 +2,7 @@ import C from './content.json'
 import { useLang, useT } from './i18n.jsx'
 import { H, Section, Panel } from './components.jsx'
 import Spotify from './Spotify.jsx'
+import ThemeSelect from './Theme.jsx'
 
 // Images in src/assets get a content hash in their filename, so browsers never serve a stale copy.
 const IMAGES = import.meta.glob('./assets/*.{png,jpg,svg,webp,gif}', {
@@ -244,7 +245,10 @@ export default function App() {
   return (
     <div id="wrap">
       <a id="top" />
-      <LangBar />
+      <div className="topbar">
+        <ThemeSelect />
+        <LangBar />
+      </div>
       <Masthead />
       <table className="layout" width="100%" cellPadding="0" cellSpacing="0">
         <tbody>
