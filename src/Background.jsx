@@ -3,24 +3,30 @@ import C from './content.json'
 import { useT } from './i18n.jsx'
 import { startPlasma } from './fx/plasma.js'
 import { startLife } from './fx/life.js'
+import { startStars } from './fx/stars.js'
+import { startTokens } from './fx/tokens.js'
+import { startGrid } from './fx/grid.js'
 
 const IDS = C.fx.map((f) => f.id)
-const STARTERS = { plasma: startPlasma, life: startLife }
+const STARTERS = {
+  plasma: startPlasma,
+  life: startLife,
+  stars: startStars,
+  tokens: startTokens,
+  grid: startGrid,
+}
 
-// First visit: effects ON only where they make sense. Off on phones (the content
-// covers the whole screen anyway), "save data" mode, low-core CPUs, or if this
-// browser already had to switch the effect off for being too slow.
+// Default is always "none": nobody sees an animation they didn't ask for.
+// Order: explicit ?bg= link, then "this browser was too slow" (stays off), then the saved choice.
 function initialFx() {
   const m = /[?&]bg=([a-z]+)/.exec(location.search)
   if (m && IDS.includes(m[1])) return m[1]
   try {
+    if (localStorage.getItem('bg-slow') === '1') return 'none'
     const s = localStorage.getItem('bg')
     if (IDS.includes(s)) return s
-    if (localStorage.getItem('bg-slow') === '1') return 'none'
   } catch {}
-  const small = window.matchMedia('(max-width: 860px)').matches
-  const lowPower = navigator.connection?.saveData || (navigator.hardwareConcurrency || 4) <= 2
-  return small || lowPower ? 'none' : 'plasma'
+  return 'none'
 }
 
 export function useFx() {
@@ -84,7 +90,7 @@ export function BackgroundFx({ fx, onSlow }) {
     }
   }, [fx, onSlow])
 
-  return <canvas ref={ref} className="fx" aria-hidden="true" hidden={fx === 'none'} />
+  return <canvas ref={ref} className="fx" data-fx={fx} aria-hidden="true" hidden={fx === 'none'} />
 }
 
 export function FxSelect({ fx, setFx, slow }) {

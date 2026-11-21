@@ -35,8 +35,11 @@
 
   "fx": [
     { "id": "none", "name": { "en": "none", "pt": "nenhum" } },
+    { "id": "stars", "name": { "en": "Starfield", "pt": "Estrelas" } },
     { "id": "plasma", "name": { "en": "Plasma", "pt": "Plasma" } },
-    { "id": "life", "name": { "en": "Game of Life", "pt": "Jogo da Vida" } }
+    { "id": "life", "name": { "en": "Game of Life", "pt": "Jogo da Vida" } },
+    { "id": "tokens", "name": { "en": "Falling tokens", "pt": "Tokens caindo" } },
+    { "id": "grid", "name": { "en": "Outrun grid", "pt": "Grade outrun" } }
   ],
 
   "themes": [

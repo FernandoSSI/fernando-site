@@ -90,15 +90,17 @@ export default function Spotify() {
           </>
         )}
       </div>
-      {data.art && (
-        <a href={data.url || undefined}>
-          <img className="cover" src={data.art} alt={data.album} width="150" height="150" />
-        </a>
-      )}
-      <div className="track">
-        {data.url ? <a href={data.url}>{data.title}</a> : data.title}
+      <div className="sp-row">
+        {data.art && (
+          <a href={data.url || undefined}>
+            <img className="cover" src={data.art} alt={data.album} width="150" height="150" />
+          </a>
+        )}
+        <div className="sp-text">
+          <div className="track">{data.url ? <a href={data.url}>{data.title}</a> : data.title}</div>
+          <div className="artist">{data.artist}</div>
+        </div>
       </div>
-      <div className="artist">{data.artist}</div>
     </Panel>
   )
 }

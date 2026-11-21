@@ -340,6 +340,33 @@ pre.contact {
   }
   td.side { padding-right: 0; }
   h1.name { font-size: 44px; }
+
+  /* keep wide content (the contact block) from stretching a section past the screen */
+  table.sec { table-layout: fixed; }
+  pre.contact { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; }
+
+  /* phones: the side panels become a 2-column grid instead of one tall stack,
+     and the music card turns into a compact row (small cover + text) */
+  table.layout > tbody > tr > td.side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  td.side > table.panel { margin-bottom: 0; align-self: start; min-width: 0; }
+
+  /* small cover on top, text under it (a half-width card is too narrow for text beside the cover) */
+  .spotify .sp-row { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+  .spotify .sp-row .cover { width: 56px; height: 56px; flex: none; margin: 0; }
+  .spotify .sp-row .sp-text { min-width: 0; width: 100%; }
+  .spotify .sp-row .track { font-size: 12px; overflow-wrap: anywhere; }
+  .spotify .sp-row .artist { font-size: 11px; overflow-wrap: anywhere; }
+}
+
+/* very narrow phones: one column again; the card is wide enough for cover + text side by side */
+@media (max-width: 340px) {
+  table.layout > tbody > tr > td.side { grid-template-columns: 1fr; }
+  .spotify .sp-row { flex-direction: row; gap: 8px; }
 }
 
 /* marquee without <marquee> */
@@ -417,8 +444,8 @@ table.p-mag { border: 3px ridge var(--a-mag); } table.p-mag th { background: var
   background: var(--code-bg);
   margin-bottom: 6px;
 }
-.spotify .track { font-weight: bold; font-size: 13px; word-break: break-word; }
-.spotify .artist { color: var(--text-dim); margin-top: 2px; word-break: break-word; }
+.spotify .track { font-weight: bold; font-size: 13px; overflow-wrap: anywhere; }
+.spotify .artist { color: var(--text-dim); margin-top: 2px; overflow-wrap: anywhere; }
 
 /* tiny equalizer while something is playing */
 .eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 11px; vertical-align: baseline; }
@@ -508,10 +535,15 @@ canvas.fx {
   width: 100vw; height: 100vh;
   z-index: -2;
   pointer-events: none;
-  opacity: var(--fx-opacity);
+  opacity: calc(var(--fx-opacity) * var(--fx-mult, 1));
   image-rendering: pixelated;   /* plasma is drawn small and scaled up on purpose */
 }
 canvas.fx[hidden] { display: none; }
+/* some effects are thinner/dimmer by nature, so they get a boost */
+canvas.fx[data-fx="stars"]   { --fx-mult: 2; }
+canvas.fx[data-fx="tokens"]  { --fx-mult: 1.6; }
+canvas.fx[data-fx="grid"]    { --fx-mult: 1.7; }
+canvas.fx[data-fx="life"], canvas.fx[data-fx="stars"], canvas.fx[data-fx="tokens"], canvas.fx[data-fx="grid"] { image-rendering: auto; }
 
 .leftbar { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; }
 .fxnote { color: var(--a-red); }
