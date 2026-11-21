@@ -2,7 +2,8 @@
 //
 // 1. https://developer.spotify.com/dashboard -> Create app
 //    Redirect URI (exactly):  http://127.0.0.1:8888/callback
-//    (Spotify no longer accepts "localhost", use the 127.0.0.1 address)
+//    (Spotify no longer accepts "localhost", use the 127.0.0.1 address;
+//     if 8888 is busy, set SPOTIFY_AUTH_PORT=8889 and register that port instead)
 // 2. In YOUR terminal (not a shared one, the token is printed):
 //      SPOTIFY_CLIENT_ID=xxx SPOTIFY_CLIENT_SECRET=yyy node scripts/spotify-auth.mjs
 // 3. Open the URL it prints, accept, and copy the refresh token into Vercel
@@ -20,7 +21,7 @@ if (!id || !secret) {
   process.exit(1)
 }
 
-const PORT = 8888
+const PORT = Number(process.env.SPOTIFY_AUTH_PORT || 8888) // the redirect URI in the dashboard must use the same port
 const REDIRECT = `http://127.0.0.1:${PORT}/callback`
 const SCOPE = 'user-read-currently-playing user-read-recently-played'
 const state = crypto.randomBytes(8).toString('hex')
@@ -35,8 +36,15 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(404).end()
     return
   }
+  const err = url.searchParams.get('error')
+  if (err) {
+    console.error('Spotify returned an error:', err)
+    res.writeHead(400).end(`Spotify returned: ${err}. Close this tab and open the authorize URL from the terminal again.`)
+    return
+  }
   if (url.searchParams.get('state') !== state || !url.searchParams.get('code')) {
-    res.writeHead(400).end('Bad state or missing code.')
+    console.error('Callback without a valid code/state. Params received:', [...url.searchParams.keys()].join(', ') || '(none)')
+    res.writeHead(400).end('Do not open /callback yourself. Open the authorize URL printed in the terminal and accept there.')
     return
   }
   const r = await fetch('https://accounts.spotify.com/api/token', {
