@@ -112,6 +112,7 @@
       {
         "role": "AI Engineer &amp; Full Stack Developer",
         "org": "Hug Labs",
+        "logo": "logo-hug.png",
         "when": { "en": "Jan 2025 - present / remote", "pt": "jan 2025 - atual / remoto" },
         "bullets": [
           {
@@ -140,6 +141,7 @@
       {
         "role": "Software Developer Intern",
         "org": "CI&amp;T (client: Livelo)",
+        "logo": "logo-cit.png",
         "when": { "en": "Apr - Aug 2026 / remote", "pt": "abr - ago 2026 / remoto" },
         "bullets": [
           {
@@ -164,6 +166,7 @@
       {
         "role": "Data Scientist &amp; LLM Engineer (part-time)",
         "org": "Jus Digital",
+        "logo": "logo-jusdigital.png",
         "when": { "en": "Nov 2025 - Mar 2026 / remote", "pt": "nov 2025 - mar 2026 / remoto" },
         "bullets": [
           {
@@ -188,6 +191,7 @@
       {
         "role": "AI Researcher",
         "org": "CEIA - Center of Excellence in AI (UFG)",
+        "logo": "logo-ceia.png",
         "when": { "en": "Jan - May 2025 / remote", "pt": "jan - mai 2025 / remoto" },
         "bullets": [
           {
@@ -208,6 +212,7 @@
       {
         "role": "Web Developer",
         "org": "Pódio Digital",
+        "logo": "logo-podio.png",
         "when": { "en": "Jul - Dec 2024 / remote", "pt": "jul - dez 2024 / remoto" },
         "bullets": [
           {

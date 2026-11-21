@@ -125,11 +125,16 @@ function Experience() {
         <div key={i}>
           {i > 0 && <hr className="dash" />}
           <div className="job">
-            <h3>
-              <H x={j.role} /> <span className="org">@ <H x={j.org} /></span>
-            </h3>
-            <div className="when">
-              <H x={j.when} />
+            <div className="job-head">
+              {j.logo && <img className="logo" src={img(j.logo)} alt="" width="44" height="44" />}
+              <div className="job-title">
+                <h3>
+                  <H x={j.role} /> <span className="org">@ <H x={j.org} /></span>
+                </h3>
+                <div className="when">
+                  <H x={j.when} />
+                </div>
+              </div>
             </div>
             <ul className="hl">
               {j.bullets.map((b, k) => (

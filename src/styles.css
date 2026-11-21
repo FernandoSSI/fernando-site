@@ -275,6 +275,20 @@ hr.dash { border: 0; border-top: 2px dashed var(--line); margin: 12px 0; }
   color: var(--a-lime);
   margin: 1px 0 4px 0;
 }
+
+/* company icon next to the job title (a plain framed icon, not a sticker) */
+.job-head { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.job-title { min-width: 0; }
+.job-head .when { margin-bottom: 0; }
+img.logo {
+  display: block;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--line2);
+  background: var(--code-bg);
+  image-rendering: auto;
+}
 ul.hl { margin: 4px 0 6px 0; padding: 0; list-style: none; }
 ul.hl li { margin: 5px 0; padding-left: 16px; position: relative; }
 ul.hl li:before { content: "\25B8"; position: absolute; left: 0; color: var(--a-red); }
@@ -340,6 +354,9 @@ pre.contact {
   }
   td.side { padding-right: 0; }
   h1.name { font-size: 44px; }
+
+  img.logo { width: 36px; height: 36px; }
+  .job-head { gap: 8px; }
 
   /* keep wide content (the contact block) from stretching a section past the screen */
   table.sec { table-layout: fixed; }
