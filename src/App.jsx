@@ -154,30 +154,32 @@ function Projects() {
   const t = useT()
   return (
     <Section id="projects" color="cyan" title={P.title}>
-      {P.items.map((p) => (
-        <div className="job proj-card" key={p.name}>
-          {p.sticker && (
-            <>
-              <img className="sticker" src={img(p.sticker)} alt={`${p.name} logo`} width="112" />
-              <div className="sticker-gap" />
-            </>
-          )}
-          <h3>
-            {p.name} <span className="org">- <H x={p.tagline} /></span>
-          </h3>
-          <div className="when">
-            <H x={p.meta} />
+      {P.items.map((p, i) => (
+        <div key={p.name}>
+          {i > 0 && <hr className="dash" />}
+          <div className="job">
+            <div className="job-head">
+              {p.logo && <img className="logo" src={img(p.logo)} alt="" width="44" height="44" />}
+              <div className="job-title">
+                <h3>
+                  {p.name} <span className="org">- <H x={p.tagline} /></span>
+                </h3>
+                <div className="when">
+                  <H x={p.meta} />
+                </div>
+              </div>
+            </div>
+            <H as="p" x={p.desc} />
+            <pre className="contact">$ {p.code}</pre>
+            <div className="stk">{p.stack}</div>
+            <p>
+              {p.links.map((l) => (
+                <span key={l.url}>
+                  <a href={l.url}>[ {t(l.label)} ]</a>{' '}
+                </span>
+              ))}
+            </p>
           </div>
-          <H as="p" x={p.desc} />
-          <pre className="contact">$ {p.code}</pre>
-          <div className="stk">{p.stack}</div>
-          <p>
-            {p.links.map((l) => (
-              <span key={l.url}>
-                <a href={l.url}>[ {t(l.label)} ]</a>{' '}
-              </span>
-            ))}
-          </p>
         </div>
       ))}
       <H as="p" className="cvnote" x={P.more} />

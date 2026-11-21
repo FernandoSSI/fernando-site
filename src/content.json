@@ -243,7 +243,7 @@
           "en": "A lightweight, type-safe <strong>prompt management library</strong> for Python. Keep your LLM prompts in YAML files, outside the application code, with <strong>Jinja2</strong> templating (loops, conditionals, filters) and <strong>Pydantic</strong> validation of the inputs. You can register your own classes as custom types. Point it at a directory and start rendering.",
           "pt": "Uma biblioteca Python leve e com tipagem para <strong>gerenciar prompts</strong>. Mantenha seus prompts de LLM em arquivos YAML, fora do código da aplicação, com templates <strong>Jinja2</strong> (loops, condicionais, filtros) e validação das entradas com <strong>Pydantic</strong>. Dá para registrar suas próprias classes como tipos customizados. Aponte para uma pasta e comece a renderizar."
         },
-        "sticker": "soin-sticker.png",
+        "logo": "logo-soin.png",
         "code": "pip install soin-ai",
         "stack": "Python, Jinja2, Pydantic, YAML",
         "links": [

@@ -276,7 +276,7 @@ hr.dash { border: 0; border-top: 2px dashed var(--line); margin: 12px 0; }
   margin: 1px 0 4px 0;
 }
 
-/* company icon next to the job title (a plain framed icon, not a sticker) */
+/* company / project icon next to the entry title (a plain framed icon) */
 .job-head { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
 .job-title { min-width: 0; }
 .job-head .when { margin-bottom: 0; }
@@ -394,38 +394,6 @@ pre.contact {
 }
 @keyframes tick { to { transform: translateX(-100%); } }
 
-/* ---------- sticker on the project card ---------- */
-/* each project is its own card; the sticker is pinned to the card's top-right corner */
-.proj-card {
-  position: relative;
-  border: 2px dashed var(--line2);
-  background: var(--card-bg);
-  padding: 12px 14px 6px 14px;
-  margin: 34px 0 14px 0;
-}
-.proj-card:first-child { margin-top: 30px; }
-
-.sticker {
-  position: absolute;
-  top: -30px;
-  right: -26px;
-  z-index: 100; /* above the scanline overlay (99): it's stuck on top of the screen */
-  transform: rotate(7deg);
-  transform-origin: 70% 30%;
-  filter: drop-shadow(3px 5px 3px rgba(0, 0, 0, .85));
-  transition: transform .15s ease-out;
-  pointer-events: auto;
-}
-.sticker:hover { transform: rotate(2deg) scale(1.04); }
-
-/* keeps the first lines of text from running under the sticker */
-.sticker-gap { float: right; width: 92px; height: 52px; }
-
-@media (max-width: 860px) {
-  .sticker { right: -6px; top: -24px; width: 84px; }
-  .sticker-gap { width: 72px; height: 44px; }
-}
-
 /* ---------- collapsible section header ---------- */
 table.sec .bar {
   display: flex;
@@ -528,7 +496,6 @@ html[data-theme="paper"] {
   --fs: 14px;
 }
 html[data-theme="paper"] { --fx-opacity: .2; }
-html[data-theme="paper"] .sticker { filter: drop-shadow(2px 3px 2px rgba(0, 0, 0, .45)); }
 html[data-theme="paper"] body::after { display: none; }
 
 /* purple / pink dusk */
