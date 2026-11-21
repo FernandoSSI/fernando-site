@@ -1,0 +1,288 @@
+{
+  "name": "Fernando Santos",
+  "email": "fernandosi2005@gmail.com",
+  "github": "https://github.com/FernandoSSI",
+  "linkedin": "https://linkedin.com/in/fersantoss-dev",
+
+  "meta": {
+    "title": { "en": "Fernando Santos", "pt": "Fernando Santos" },
+    "description": {
+      "en": "Fernando Santos works with AI agents, RAG and the software around them. Software engineering student at UFC, Brazil.",
+      "pt": "Fernando Santos trabalha com agentes de IA, RAG e o software ao redor deles. Estudante de Engenharia de Software na UFC, Brasil."
+    }
+  },
+
+  "tagline": [
+    { "en": "software engineering", "pt": "engenharia de software" },
+    { "en": "LLM agents", "pt": "agentes de LLM" },
+    { "en": "RAG", "pt": "RAG" },
+    { "en": "fine-tuning", "pt": "fine-tuning" },
+    { "en": "Ceará, Brazil", "pt": "Ceará, Brasil" }
+  ],
+
+  "ticker": {
+    "en": "+++ AI agents +++ RAG +++ LoRA/QLoRA +++ vLLM +++ UFC software engineering 2023-2027 +++ 1st place, Hug Labs AI hackathon +++ projects and blog coming soon +++",
+    "pt": "+++ agentes de IA +++ RAG +++ LoRA/QLoRA +++ vLLM +++ Engenharia de Software na UFC 2023-2027 +++ 1º lugar no hackathon de IA da Hug Labs +++ projetos e blog em breve +++"
+  },
+
+  "ui": {
+    "collapse": { "en": "collapse section", "pt": "recolher seção" },
+    "expand": { "en": "expand section", "pt": "expandir seção" }
+  },
+
+  "panels": {
+    "index": { "en": "Index", "pt": "Índice" },
+    "now": { "en": "Now", "pt": "Agora" },
+    "links": { "en": "Links", "pt": "Links" }
+  },
+
+  "nav": [
+    { "id": "about", "label": { "en": "about", "pt": "sobre" } },
+    { "id": "experience", "label": { "en": "experience", "pt": "experiência" } },
+    { "id": "projects", "label": { "en": "projects", "pt": "projetos" } },
+    { "id": "stack", "label": { "en": "stack", "pt": "stack" } },
+    { "id": "other", "label": { "en": "other", "pt": "outros" } },
+    { "id": "contact", "label": { "en": "contact", "pt": "contato" } }
+  ],
+
+  "now": [
+    {
+      "k": { "en": "working on", "pt": "trabalhando em" },
+      "v": { "en": "HugYourCustomer, at Hug Labs", "pt": "HugYourCustomer, na Hug Labs" }
+    },
+    {
+      "k": { "en": "studying", "pt": "estudando" },
+      "v": { "en": "Software Engineering @ UFC", "pt": "Engenharia de Software @ UFC" }
+    }
+  ],
+
+  "link_labels": {
+    "email": { "en": "e-mail", "pt": "e-mail" },
+    "github": { "en": "github", "pt": "github" },
+    "linkedin": { "en": "linkedin", "pt": "linkedin" }
+  },
+
+  "about": {
+    "title": { "en": "About", "pt": "Sobre" },
+    "paras": [
+      {
+        "en": "I'm a software engineering student at UFC. Most of my time goes into getting LLMs to do <em>real work in production</em> instead of in demos. I work with <strong>AI agents, RAG, and the backend and product code around them</strong>.",
+        "pt": "Sou estudante de Engenharia de Software na UFC. Passo a maior parte do tempo fazendo LLMs <em>trabalharem de verdade em produção</em> e não só em demos. Trabalho com <strong>agentes de IA, RAG e o código de backend e produto ao redor deles</strong>."
+      },
+      {
+        "en": "The parts I like best are the unglamorous ones: routing, evaluation, guardrails, CI, and getting a model small enough to run on hardware I control.",
+        "pt": "As partes de que mais gosto são as pouco glamourosas: roteamento, avaliação, guardrails, CI e deixar um modelo pequeno o bastante para rodar em hardware que eu controlo."
+      },
+      {
+        "en": "This site is my corner of the internet: work, projects, and whatever else I end up putting here.",
+        "pt": "Este site é o meu canto da internet: trabalho, projetos e o que mais eu acabar colocando aqui."
+      }
+    ]
+  },
+
+  "experience": {
+    "title": { "en": "Experience", "pt": "Experiência" },
+    "jobs": [
+      {
+        "role": "AI Engineer &amp; Full Stack Developer",
+        "org": "Hug Labs",
+        "when": { "en": "Jan 2025 - present / remote", "pt": "jan 2025 - atual / remoto" },
+        "bullets": [
+          {
+            "en": "Responsible for <strong>HugYourCustomer</strong>, an AI customer-engagement platform where agents talk to leads over WhatsApp, webchat, email and voice (10K+ leads for a single client). I wrote most of the code.",
+            "pt": "Responsável pela <strong>HugYourCustomer</strong>, plataforma de engajamento de clientes com IA em que agentes conversam com leads por WhatsApp, webchat, e-mail e voz (mais de 10 mil leads de um único cliente). Escrevi a maior parte do código."
+          },
+          {
+            "en": "Built the <strong>multi-agent orchestration layer</strong> (Python, LangGraph, FastAPI): a unified agent with tool calling, routing and handoff between agents, MCP tool selection and escalation to a human. Also a block-based <strong>workflow engine</strong>, so behavior is configured instead of hard-coded.",
+            "pt": "Construí a <strong>camada de orquestração multiagente</strong> (Python, LangGraph, FastAPI): um agente unificado com tool calling, roteamento e handoff entre agentes, seleção de ferramentas via MCP e escalonamento para um humano. Também um <strong>motor de workflows</strong> em blocos, para que o comportamento seja configurado e não fixo no código."
+          },
+          {
+            "en": "<strong>RAG</strong> on Qdrant (multi-query retrieval, neighbor chunks, XLSX/CSV querying, multimodal documents) and the quality and safety layer around it: prompt-injection detection, scope guardrails, Langfuse tracing, and a pytest suite running in GitLab CI/CD.",
+            "pt": "<strong>RAG</strong> sobre Qdrant (busca multi-query, chunks vizinhos, consulta a XLSX/CSV, documentos multimodais) e a camada de qualidade e segurança ao redor: detecção de prompt injection, guardrails de escopo, tracing com Langfuse e uma suíte pytest rodando no CI/CD do GitLab."
+          },
+          {
+            "en": "Part of the migration from proprietary models (GPT-4, Cohere) to self-hosted open ones (<strong>Qwen2.5, BGE-M3 on vLLM</strong>). Fine-tuned small models with <strong>LoRA/QLoRA</strong> (Unsloth) on AWS EC2 for intent classification and structured extraction, using synthetic data generated from anonymized traces.",
+            "pt": "Participei da migração de modelos proprietários (GPT-4, Cohere) para modelos open-source hospedados por nós (<strong>Qwen2.5, BGE-M3 no vLLM</strong>). Fiz fine-tuning de modelos pequenos com <strong>LoRA/QLoRA</strong> (Unsloth) na AWS EC2 para classificação de intenção e extração estruturada, com dados sintéticos gerados a partir de traces anonimizados."
+          },
+          {
+            "en": "Voice-driven form filling (speech-to-text + LLM tool calling) that cut manual input time by about <em>80%</em>. <em>1st place</em> in the company's internal AI hackathon.",
+            "pt": "Preenchimento de formulário por voz (speech-to-text + tool calling com LLM) que reduziu o tempo de digitação em cerca de <em>80%</em>. <em>1º lugar</em> no hackathon interno de IA da empresa."
+          }
+        ],
+        "stack": "Python, LangGraph, FastAPI, Laravel, React, Qdrant, Redis, vLLM, Unsloth, Langfuse, AWS, GitLab CI"
+      },
+      {
+        "role": "Software Developer Intern",
+        "org": "CI&amp;T (client: Livelo)",
+        "when": { "en": "Apr - Aug 2026 / remote", "pt": "abr - ago 2026 / remoto" },
+        "bullets": [
+          {
+            "en": "Contributed to an <strong>LLM conversational agent</strong> in Livelo's webchat: before a human support agent takes over, it summarizes the customer's context (purchases, requests and activity on the platform).",
+            "pt": "Contribuí com um <strong>agente conversacional com LLM</strong> no webchat da Livelo: antes de um atendente humano assumir, ele resume o contexto do cliente (compras, solicitações e atividade na plataforma)."
+          },
+          {
+            "en": "Automated <strong>Q&amp;A workflows</strong> and knowledge retrieval for customer support in a large corporate environment, following enterprise code review and delivery standards.",
+            "pt": "Fluxos automatizados de <strong>perguntas e respostas</strong> e recuperação de conhecimento para suporte, em ambiente corporativo de grande porte, seguindo padrões de code review e entrega."
+          },
+          {
+            "en": "Built a multi-tier <strong>feedback platform</strong> for the internal onboarding program: Spring Boot, React and a FastAPI BFF layer.",
+            "pt": "Construí uma <strong>plataforma de feedback</strong> em várias camadas para o programa interno de onboarding: Spring Boot, React e uma camada BFF em FastAPI."
+          },
+          {
+            "en": "Microservices and Agile/Scrum teams.",
+            "pt": "Microsserviços e times Agile/Scrum."
+          }
+        ],
+        "stack": "Python, FastAPI, Java, Spring Boot, React, Scrum"
+      },
+      {
+        "role": "Data Scientist &amp; LLM Engineer (part-time)",
+        "org": "Jus Digital",
+        "when": { "en": "Nov 2025 - Mar 2026 / remote", "pt": "nov 2025 - mar 2026 / remoto" },
+        "bullets": [
+          {
+            "en": "LLM conversational agents for legal offices, including specialist \"oracle\" agents that answer legal questions with <strong>RAG</strong> and tool calling.",
+            "pt": "Agentes conversacionais com LLM para escritórios de advocacia, incluindo agentes \"oráculo\" especialistas que respondem dúvidas jurídicas com <strong>RAG</strong> e tool calling."
+          },
+          {
+            "en": "Migrated manual n8n pipelines to a <strong>LangGraph/LangChain/FastAPI</strong> agent framework, cutting response latency by about <em>10 seconds</em>.",
+            "pt": "Migrei pipelines manuais em n8n para um framework de agentes com <strong>LangGraph/LangChain/FastAPI</strong>, reduzindo a latência das respostas em cerca de <em>10 segundos</em>."
+          },
+          {
+            "en": "<strong>Multi-tenant</strong> agent architecture, so each client gets a customizable agent, plus part of an AI-CRM gateway connecting agents to messaging channels.",
+            "pt": "Arquitetura de agentes <strong>multi-tenant</strong>, para que cada cliente tenha um agente customizável, e contribuição em um gateway IA-CRM que conecta os agentes aos canais de mensagem."
+          },
+          {
+            "en": "Scraping and structured-extraction pipelines that produced a Brazilian legal dataset of about <em>50K records</em>.",
+            "pt": "Pipelines de scraping e extração estruturada que geraram um dataset jurídico brasileiro com cerca de <em>50 mil registros</em>."
+          }
+        ],
+        "stack": "Python, FastAPI, LangGraph, LangChain, RAG, n8n, AppWrite"
+      },
+      {
+        "role": "AI Researcher",
+        "org": "CEIA - Center of Excellence in AI (UFG)",
+        "when": { "en": "Jan - May 2025 / remote", "pt": "jan - mai 2025 / remoto" },
+        "bullets": [
+          {
+            "en": "Applied research in NLP and LLM systems at a national AI research center connecting academia, government and industry.",
+            "pt": "Pesquisa aplicada em NLP e sistemas com LLM em um centro nacional de pesquisa em IA que conecta academia, governo e indústria."
+          },
+          {
+            "en": "Architectures for conversational agents using multi-agent systems, tool calling and computer-use workflows; RAG pipelines.",
+            "pt": "Arquiteturas de agentes conversacionais com sistemas multiagente, tool calling e fluxos de computer use; pipelines de RAG."
+          },
+          {
+            "en": "LLM evaluation pipelines (prompt testing, benchmarking, automated validation) and MLOps workflows for reproducible experimentation.",
+            "pt": "Pipelines de avaliação de LLMs (testes de prompt, benchmarks, validação automática) e workflows de MLOps para experimentação reprodutível."
+          }
+        ],
+        "stack": "Python, LangChain, LangGraph, FastAPI, ChromaDB, MCP, pytest"
+      },
+      {
+        "role": "Web Developer",
+        "org": "Pódio Digital",
+        "when": { "en": "Jul - Dec 2024 / remote", "pt": "jul - dez 2024 / remoto" },
+        "bullets": [
+          {
+            "en": "Class scheduling system with Google Calendar API and automatic Google Meet creation, built with Node.js (Express) and MongoDB.",
+            "pt": "Sistema de agendamento de aulas com Google Calendar API e criação automática de reuniões no Google Meet, feito com Node.js (Express) e MongoDB."
+          },
+          {
+            "en": "Refactored the React and Tailwind CSS frontend: more consistent UI, fewer user-facing errors.",
+            "pt": "Refatorei o frontend em React e Tailwind CSS: UI mais consistente e menos erros para o usuário."
+          }
+        ],
+        "stack": "React, Node.js, MongoDB, Tailwind CSS"
+      }
+    ]
+  },
+
+  "projects": {
+    "title": { "en": "Projects", "pt": "Projetos" },
+    "items": [
+      {
+        "name": "soin",
+        "tagline": {
+          "en": "Simple Optimized Instruction Network",
+          "pt": "Simple Optimized Instruction Network"
+        },
+        "meta": { "en": "open source / Python / MIT", "pt": "código aberto / Python / MIT" },
+        "desc": {
+          "en": "A lightweight, type-safe <strong>prompt management library</strong> for Python. Keep your LLM prompts in YAML files, outside the application code, with <strong>Jinja2</strong> templating (loops, conditionals, filters) and <strong>Pydantic</strong> validation of the inputs. You can register your own classes as custom types. Point it at a directory and start rendering.",
+          "pt": "Uma biblioteca Python leve e com tipagem para <strong>gerenciar prompts</strong>. Mantenha seus prompts de LLM em arquivos YAML, fora do código da aplicação, com templates <strong>Jinja2</strong> (loops, condicionais, filtros) e validação das entradas com <strong>Pydantic</strong>. Dá para registrar suas próprias classes como tipos customizados. Aponte para uma pasta e comece a renderizar."
+        },
+        "sticker": "soin-sticker.png",
+        "code": "pip install soin-ai",
+        "stack": "Python, Jinja2, Pydantic, YAML",
+        "links": [
+          { "label": { "en": "github", "pt": "github" }, "url": "https://github.com/FernandoSSI/soin" },
+          { "label": { "en": "pypi", "pt": "pypi" }, "url": "https://pypi.org/project/soin-ai/" }
+        ]
+      }
+    ],
+    "more": {
+      "en": "More projects will show up here.",
+      "pt": "Mais projetos vão aparecer aqui."
+    }
+  },
+
+  "stack": {
+    "title": { "en": "Stack", "pt": "Stack" },
+    "rows": [
+      ["*Python", "TypeScript", "JavaScript", "Java", "PHP", "SQL"],
+      ["*LangGraph", "LangChain", "*RAG", "MCP", "*vLLM", "Unsloth", "Ollama", "Langfuse"],
+      ["FastAPI", "React", "Vue", "Laravel", "Spring Boot", "Node.js"],
+      ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Qdrant", "ChromaDB"],
+      ["AWS", "Docker", "Kubernetes", "GitLab CI/CD", "Linux"]
+    ]
+  },
+
+  "other": {
+    "title": { "en": "Other", "pt": "Outros" },
+    "items": [
+      {
+        "k": { "en": "School", "pt": "Formação" },
+        "v": {
+          "en": "B.S. in Software Engineering, Federal University of Ceará (UFC), 2023 to 2027. GPA 8.77/10.",
+          "pt": "Bacharelado em Engenharia de Software, Universidade Federal do Ceará (UFC), 2023 a 2027. Média 8,77/10."
+        }
+      },
+      {
+        "k": { "en": "Teaching", "pt": "Monitoria" },
+        "v": {
+          "en": "teaching assistant for Object-Oriented Programming in 2025; mentored 60+ students in Java.",
+          "pt": "monitoria de Programação Orientada a Objetos em 2025; acompanhei mais de 60 alunos em Java."
+        }
+      },
+      {
+        "k": { "en": "Behring Foundation", "pt": "Behring Foundation" },
+        "v": {
+          "en": "scholar since 2023. Volunteer frontend developer at Behring Academy in 2024.",
+          "pt": "bolsista desde 2023. Voluntariado no frontend da Behring Academy em 2024."
+        }
+      },
+      {
+        "k": { "en": "Olympiads", "pt": "Olimpíadas" },
+        "v": {
+          "en": "bronze medals in Brazilian math, physics and astronomy (OBMEP, OBFEP, OBA).",
+          "pt": "medalhas de bronze nas olimpíadas brasileiras de matemática, física e astronomia (OBMEP, OBFEP, OBA)."
+        }
+      }
+    ]
+  },
+
+  "contact": {
+    "title": { "en": "Contact", "pt": "Contato" },
+    "send": { "en": "send an email", "pt": "enviar e-mail" }
+  },
+
+  "footer": {
+    "updated": { "en": "last updated", "pt": "atualizado em" },
+    "top": { "en": "top", "pt": "topo" },
+    "months": {
+      "en": ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"],
+      "pt": ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"]
+    }
+  }
+}

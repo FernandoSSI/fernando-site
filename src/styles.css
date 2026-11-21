@@ -1,0 +1,317 @@
+/* ------------------------------------------------------------
+   fernando santos - homepage
+   tables, borders, noise. no frameworks.
+   ------------------------------------------------------------ */
+
+html { background: #000; }
+
+body {
+  margin: 0;
+  padding: 10px 6px 30px 6px;
+  color: #d8d8d8;
+  font-family: Verdana, Geneva, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  background-color: #050505;
+  /* grain + diagonal stripes */
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.22'/></svg>"),
+    repeating-linear-gradient(45deg, rgba(255,0,60,.06) 0 2px, transparent 2px 9px);
+}
+
+/* scanlines over everything */
+body::after {
+  content: "";
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 1px, transparent 1px 3px);
+  z-index: 99;
+}
+
+a:link    { color: #00e5ff; }
+a:visited { color: #ff3df2; }
+a:hover   { color: #000; background: #ffe600; text-decoration: none; }
+a:active  { color: #fff; background: #ff1e1e; }
+
+#wrap { width: 820px; margin: 0 auto; }
+
+table { border-collapse: separate; }
+td { vertical-align: top; }
+
+/* ---------- language bar ---------- */
+.langbar {
+  text-align: right;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  margin: 0 0 6px 0;
+}
+.langbar a:link, .langbar a:visited {
+  display: inline-block;
+  border: 2px solid #555;
+  padding: 1px 9px;
+  margin-left: 4px;
+  text-decoration: none;
+  color: #ddd;
+}
+.langbar a.on:link, .langbar a.on:visited {
+  background: #ffe600;
+  border-color: #ffe600;
+  color: #000;
+  font-weight: bold;
+}
+
+/* ---------- masthead ---------- */
+table.head {
+  width: 100%;
+  border: 4px double #ff2a2a;
+  background: repeating-linear-gradient(-45deg, #1a0000 0 10px, #000 10px 20px);
+  margin-bottom: 8px;
+}
+table.head td { padding: 12px 16px 8px 16px; }
+
+h1.name {
+  font-family: Impact, "Arial Black", Haettenschweiler, "Liberation Sans", sans-serif;
+  font-weight: bold;
+  font-size: 78px;
+  line-height: 0.9;
+  margin: 0;
+  color: #ffe600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 4px 0 #ff00cc, -4px 0 #00e5ff, 0 4px #000;
+}
+.sub {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+  color: #7cfc00;
+  margin: 6px 0 0 0;
+}
+.sub b { color: #ff2a2a; }
+
+.ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  background: #ffe600;
+  color: #000;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 14px;
+  border: 2px solid #000;
+  border-top: 4px solid #ff2a2a;
+  border-bottom: 4px solid #ff2a2a;
+  margin-bottom: 8px;
+  padding: 2px 0;
+}
+
+/* ---------- left column ---------- */
+td.side { width: 188px; padding-right: 8px; }
+
+table.panel { width: 100%; margin-bottom: 8px; background: #0b0b0b; }
+table.panel th {
+  font-family: Impact, "Arial Black", "Liberation Sans", sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: left;
+  padding: 2px 8px;
+  color: #000;
+}
+table.panel td { padding: 6px 8px; }
+
+table.p-red  { border: 3px ridge #ff2a2a; } table.p-red  th { background: #ff2a2a; }
+table.p-cyan { border: 3px ridge #00e5ff; } table.p-cyan th { background: #00e5ff; }
+table.p-lime { border: 3px ridge #7cfc00; } table.p-lime th { background: #7cfc00; }
+
+.menu a {
+  display: block;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 1px 0;
+  text-decoration: none;
+}
+.menu a:before { content: ">> "; color: #ff2a2a; }
+.menu a:hover:before { color: #000; }
+
+.mono { font-family: "Courier New", Courier, monospace; font-size: 12px; }
+.mono b { color: #ffe600; }
+
+.blink { animation: blink 1s steps(2, start) infinite; color: #ff2a2a; font-weight: bold; }
+@keyframes blink { to { visibility: hidden; } }
+
+/* ---------- main column ---------- */
+td.main { padding: 0; }
+
+table.sec { width: 100%; margin-bottom: 10px; background: #0b0b0b; }
+table.sec > tbody > tr > th {
+  font-family: Impact, "Arial Black", "Liberation Sans", sans-serif;
+  font-weight: bold;
+  font-size: 26px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 1px 10px;
+  color: #000;
+}
+table.sec > tbody > tr > td { padding: 10px 14px 12px 14px; }
+
+table.s-red  { border: 4px ridge #ff2a2a; } table.s-red  > tbody > tr > th { background: #ff2a2a; }
+table.s-cyan { border: 4px ridge #00e5ff; } table.s-cyan > tbody > tr > th { background: #00e5ff; }
+table.s-lime { border: 4px ridge #7cfc00; } table.s-lime > tbody > tr > th { background: #7cfc00; }
+table.s-mag  { border: 4px ridge #ff00cc; } table.s-mag  > tbody > tr > th { background: #ff00cc; }
+table.s-yel  { border: 4px ridge #ffe600; } table.s-yel  > tbody > tr > th { background: #ffe600; }
+
+p { margin: 6px 0; }
+.big { font-size: 16px; }
+em { color: #ffe600; font-style: normal; }
+strong { color: #fff; }
+
+hr.dash { border: 0; border-top: 2px dashed #444; margin: 12px 0; }
+
+/* ---------- experience ---------- */
+.job h3 {
+  font-family: "Arial Black", Impact, "Liberation Sans", sans-serif;
+  font-weight: bold;
+  font-size: 17px;
+  text-transform: uppercase;
+  color: #ffe600;
+  margin: 0;
+}
+.job h3 .org { color: #fff; }
+.when {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  color: #7cfc00;
+  margin: 1px 0 4px 0;
+}
+ul.hl { margin: 4px 0 6px 0; padding: 0; list-style: none; }
+ul.hl li { margin: 5px 0; padding-left: 16px; position: relative; }
+ul.hl li:before { content: "\25B8"; position: absolute; left: 0; color: #ff2a2a; }
+.stk {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  color: #00e5ff;
+  border-left: 3px solid #ff00cc;
+  padding-left: 6px;
+  margin: 6px 0 0 0;
+}
+.cvnote { margin-top: 10px; }
+
+/* ---------- projects (empty state) ---------- */
+.empty {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  color: #aaa;
+  border: 2px dashed #555;
+  padding: 14px;
+  text-align: center;
+}
+
+/* ---------- stack ---------- */
+.tags span.tag {
+  display: inline-block;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  border: 1px solid #888;
+  background: #000;
+  color: #ddd;
+  padding: 0 5px;
+  margin: 0 3px 4px 0;
+}
+.tags span.tag.h { border-color: #ffe600; color: #ffe600; }
+
+/* ---------- contact ---------- */
+pre.contact {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+  background: #000;
+  color: #7cfc00;
+  border: 2px inset #666;
+  padding: 10px 12px;
+  margin: 0 0 8px 0;
+  overflow-x: auto;
+}
+
+.foot {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  color: #777;
+  margin-top: 14px;
+}
+
+/* ---------- small screens ---------- */
+@media (max-width: 860px) {
+  #wrap { width: auto; }
+  table.layout, table.layout > tbody, table.layout > tbody > tr, table.layout > tbody > tr > td {
+    display: block;
+    width: auto;
+  }
+  td.side { padding-right: 0; }
+  h1.name { font-size: 44px; }
+}
+
+/* marquee without <marquee> */
+.ticker .track {
+  display: inline-block;
+  padding-left: 100%;
+  animation: tick 40s linear infinite;
+}
+@keyframes tick { to { transform: translateX(-100%); } }
+
+/* ---------- sticker on the project card ---------- */
+/* each project is its own card; the sticker is pinned to the card's top-right corner */
+.proj-card {
+  position: relative;
+  border: 2px dashed #666;
+  background: #050505;
+  padding: 12px 14px 6px 14px;
+  margin: 34px 0 14px 0;
+}
+.proj-card:first-child { margin-top: 30px; }
+
+.sticker {
+  position: absolute;
+  top: -30px;
+  right: -26px;
+  z-index: 100; /* above the scanline overlay (99): it's stuck on top of the screen */
+  transform: rotate(7deg);
+  transform-origin: 70% 30%;
+  filter: drop-shadow(3px 5px 3px rgba(0, 0, 0, .85));
+  transition: transform .15s ease-out;
+  pointer-events: auto;
+}
+.sticker:hover { transform: rotate(2deg) scale(1.04); }
+
+/* keeps the first lines of text from running under the sticker */
+.sticker-gap { float: right; width: 92px; height: 52px; }
+
+@media (max-width: 860px) {
+  .sticker { right: -6px; top: -24px; width: 84px; }
+  .sticker-gap { width: 72px; height: 44px; }
+}
+
+/* ---------- collapsible section header ---------- */
+table.sec .bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+}
+table.sec .toggle {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1;
+  color: #000;
+  background: transparent;
+  border: 2px solid #000;
+  padding: 3px 9px;
+  margin: 3px 0;
+  cursor: pointer;
+}
+table.sec .bar:hover .toggle,
+table.sec .toggle:focus-visible { background: #000; color: #fff; outline: none; }
