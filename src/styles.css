@@ -61,6 +61,7 @@
   --font-sub: "Arial Black", Impact, "Liberation Sans", sans-serif;
   --font-mono: "Courier New", Courier, monospace;
   --fs: 13px;
+  --fx-opacity: .38;                  /* how strong the animated background is */
 }
 
 html {
@@ -482,6 +483,7 @@ html[data-theme="paper"] {
   --font-sub: Georgia, "Times New Roman", Times, serif;
   --fs: 14px;
 }
+html[data-theme="paper"] { --fx-opacity: .2; }
 html[data-theme="paper"] .sticker { filter: drop-shadow(2px 3px 2px rgba(0, 0, 0, .45)); }
 html[data-theme="paper"] body::after { display: none; }
 
@@ -497,3 +499,19 @@ html[data-theme="vapor"] {
   --name: #fffb96; --name-a: #ff71ce; --name-b: #01cdfe; --name-c: #14002b;
   --ticker-bg: #fffb96; --ticker-fg: #14002b;
 }
+
+/* ---------- animated background (plasma / game of life) ---------- */
+/* behind the grain (-1), above the page background; never catches clicks */
+canvas.fx {
+  position: fixed;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  z-index: -2;
+  pointer-events: none;
+  opacity: var(--fx-opacity);
+  image-rendering: pixelated;   /* plasma is drawn small and scaled up on purpose */
+}
+canvas.fx[hidden] { display: none; }
+
+.leftbar { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; }
+.fxnote { color: var(--a-red); }

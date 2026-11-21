@@ -28,8 +28,16 @@
   "ui": {
     "collapse": { "en": "collapse section", "pt": "recolher seção" },
     "expand": { "en": "expand section", "pt": "expandir seção" },
-    "theme": { "en": "theme", "pt": "tema" }
+    "theme": { "en": "theme", "pt": "tema" },
+    "fx": { "en": "background", "pt": "fundo" },
+    "fxslow": { "en": "(off: slow device)", "pt": "(desligado: dispositivo lento)" }
   },
+
+  "fx": [
+    { "id": "none", "name": { "en": "none", "pt": "nenhum" } },
+    { "id": "plasma", "name": { "en": "Plasma", "pt": "Plasma" } },
+    { "id": "life", "name": { "en": "Game of Life", "pt": "Jogo da Vida" } }
+  ],
 
   "themes": [
     { "id": "acid", "name": { "en": "Acid", "pt": "Ácido" } },

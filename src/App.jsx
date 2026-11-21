@@ -3,6 +3,7 @@ import { useLang, useT } from './i18n.jsx'
 import { H, Section, Panel } from './components.jsx'
 import Spotify from './Spotify.jsx'
 import ThemeSelect from './Theme.jsx'
+import { BackgroundFx, FxSelect, useFx } from './Background.jsx'
 
 // Images in src/assets get a content hash in their filename, so browsers never serve a stale copy.
 const IMAGES = import.meta.glob('./assets/*.{png,jpg,svg,webp,gif}', {
@@ -242,11 +243,16 @@ function Footer() {
 }
 
 export default function App() {
+  const bg = useFx()
   return (
     <div id="wrap">
+      <BackgroundFx fx={bg.fx} onSlow={bg.onSlow} />
       <a id="top" />
       <div className="topbar">
-        <ThemeSelect />
+        <div className="leftbar">
+          <ThemeSelect />
+          <FxSelect fx={bg.fx} setFx={bg.setFx} slow={bg.slow} />
+        </div>
         <LangBar />
       </div>
       <Masthead />
