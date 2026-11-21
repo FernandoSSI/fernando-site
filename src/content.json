@@ -30,6 +30,12 @@
     "expand": { "en": "expand section", "pt": "expandir seção" }
   },
 
+  "spotify": {
+    "title": { "en": "Listening", "pt": "Ouvindo" },
+    "playing": { "en": "playing now", "pt": "tocando agora" },
+    "last": { "en": "last played", "pt": "última ouvida" }
+  },
+
   "panels": {
     "index": { "en": "Index", "pt": "Índice" },
     "now": { "en": "Now", "pt": "Agora" },

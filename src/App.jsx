@@ -1,6 +1,7 @@
 import C from './content.json'
 import { useLang, useT } from './i18n.jsx'
 import { H, Section, Panel } from './components.jsx'
+import Spotify from './Spotify.jsx'
 
 // Images in src/assets get a content hash in their filename, so browsers never serve a stale copy.
 const IMAGES = import.meta.glob('./assets/*.{png,jpg,svg,webp,gif}', {
@@ -88,6 +89,8 @@ function Side() {
           </span>
         ))}
       </Panel>
+
+      <Spotify />
 
       <Panel color="cyan" title={C.panels.links} tdClass="mono">
         <a href={`mailto:${C.email}`}>{t(L.email)}</a>
