@@ -43,11 +43,11 @@
   ],
 
   "themes": [
+    { "id": "vapor", "name": { "en": "Vapor", "pt": "Vapor" } },
     { "id": "acid", "name": { "en": "Acid", "pt": "Ácido" } },
     { "id": "terminal", "name": { "en": "Terminal", "pt": "Terminal" } },
     { "id": "amber", "name": { "en": "Amber", "pt": "Âmbar" } },
-    { "id": "paper", "name": { "en": "Paper", "pt": "Papel" } },
-    { "id": "vapor", "name": { "en": "Vapor", "pt": "Vapor" } }
+    { "id": "paper", "name": { "en": "Paper", "pt": "Papel" } }
   ],
 
   "spotify": {

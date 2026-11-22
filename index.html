@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="vapor">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="%SITE_URL%/og.png">
 <script>
-/* apply the saved (or ?theme=) theme before first paint, so there is no flash */
+/* default theme is vapor (set on <html>); apply the saved (or ?theme=) one before first paint, so there is no flash */
 try {
   var m = /[?&]theme=([a-z]+)/.exec(location.search);
   var t = (m && m[1]) || localStorage.getItem("theme");
