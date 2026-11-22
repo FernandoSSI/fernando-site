@@ -26,8 +26,24 @@ function localApi(env) {
   }
 }
 
+// Link previews need an absolute image URL. Set SITE_URL (e.g. https://fernando-santos.com)
+// in Vercel; otherwise fall back to Vercel's own production URL, otherwise a relative path.
+function siteUrl(env) {
+  const v = env.SITE_URL || process.env.SITE_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL || ''
+  if (!v) return ''
+  return (/^https?:/.test(v) ? v : 'https://' + v).replace(/\/$/, '')
+}
+
+function ogUrls(env) {
+  const base = siteUrl(env)
+  return {
+    name: 'og-urls',
+    transformIndexHtml: (html) => html.replaceAll('%SITE_URL%', base),
+  }
+}
+
 export default defineConfig(({ mode }) => ({
-  plugins: [react(), localApi(loadEnv(mode, process.cwd(), ''))],
+  plugins: [react(), localApi(loadEnv(mode, process.cwd(), '')), ogUrls(loadEnv(mode, process.cwd(), ''))],
   base: './',
   define: {
     __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
